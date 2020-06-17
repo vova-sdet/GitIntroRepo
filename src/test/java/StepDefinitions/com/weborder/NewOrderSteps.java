@@ -5,6 +5,7 @@ import Pages.com.WebOrderPages.HomePage;
 import Pages.com.WebOrderPages.OrderPage;
 import Utils.BrowserUtils;
 import Utils.Driver;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -12,8 +13,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,5 +110,22 @@ public class NewOrderSteps {
 
         Assert.assertEquals(expectedAddressHeaders, actualAddressHeaders);
     }
+
+    @Then("the user clicks the all products button")
+    public void the_user_clicks_the_all_products_button() {
+        homePage.allProducts.click();
+    }
+
+    @Then("the user validate the product details")
+    public void the_user_validate_the_product_details(DataTable dataTable) {
+
+        List<WebElement> pTable = homePage.productsTable;
+
+        for(int i = 0; i<dataTable.asList().size(); i++) {
+            Assert.assertEquals("Validation of product table", dataTable.asList().get(i), pTable.get(i).getText());
+        }
+
+    }
+
 
 }
