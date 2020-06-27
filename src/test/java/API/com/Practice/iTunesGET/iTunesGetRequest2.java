@@ -1,4 +1,4 @@
-package API.com.Practice;
+package API.com.Practice.iTunesGET;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;

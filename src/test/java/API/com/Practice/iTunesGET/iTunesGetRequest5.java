@@ -1,4 +1,4 @@
-package API.com.Practice;
+package API.com.Practice.iTunesGET;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -11,10 +11,10 @@ import org.junit.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class iTunesGetRequest6 {
+public class iTunesGetRequest5 {
 
     @Test
-    public void getWeeknd() throws URISyntaxException, IOException {
+    public void getEminem() throws URISyntaxException, IOException {
 
         HttpClient client = HttpClientBuilder.create().build();
 
@@ -22,7 +22,7 @@ public class iTunesGetRequest6 {
         uri.setScheme("https");
         uri.setHost("itunes.apple.com");
         uri.setPath("search");
-        uri.setCustomQuery("term=weeknd");
+        uri.setCustomQuery("term=fsfkmskfmskdfmksdmf");
 
         HttpGet get = new HttpGet(uri.build());
         get.setHeader("Accept", "application/javascript");
