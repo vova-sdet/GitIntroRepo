@@ -26,6 +26,8 @@ public class GETRequestIntro {
 //        7. Execute (click on Send button)
 
 
+        // http://cat-fact.herokuapp.com/facts
+
         HttpClient client = HttpClientBuilder.create().build();
 
         // Specify the URL/URI (endpoint)

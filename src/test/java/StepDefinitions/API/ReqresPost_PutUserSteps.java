@@ -31,8 +31,8 @@ public class ReqresPost_PutUserSteps extends PayloadUtil {
         HttpClient client = HttpClientBuilder.create().build();
 
         URIBuilder uriBuilder = new URIBuilder();
-        URI postUri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("api/users").build();
-        URI putUri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("api/users/2").build();
+        URI postUri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("com.api/users").build();
+        URI putUri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("com.api/users/2").build();
         HttpPost post = new HttpPost(postUri);
         HttpPut put = new HttpPut(putUri);
         HttpEntity entity;

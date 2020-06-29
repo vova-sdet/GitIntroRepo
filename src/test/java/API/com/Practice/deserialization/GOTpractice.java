@@ -13,10 +13,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
-public class GameOfThrones2 {
+public class GOTpractice {
+
+    //https://api.got.show/api/map/characters
 
     @Test
     public void gameOfThrones() throws URISyntaxException, IOException {
@@ -33,28 +34,14 @@ public class GameOfThrones2 {
         ObjectMapper objectMapper = new ObjectMapper();
 
         Map<String, Object> deserializedResponse = objectMapper.readValue(response.getEntity().getContent(),
-                new TypeReference<Map<String, Object>>() {});
+                new TypeReference<Map<String, Object>>() {
+                });
 
         ArrayList<Map<String, Object>> characters = (ArrayList<Map<String, Object>>) deserializedResponse.get("data");
-        Map<String, Integer> houses = new HashMap<>();
 
-
-        for (int i = 0; i < characters.size(); i++) {
-            Map<String, Object> character = (Map<String, Object>) characters.get(i);
-            String houseName = (String) character.get("house");
-
-            if (!houses.keySet().contains(houseName)) {
-                houses.put(houseName, 0);
-            }
-
-            if (character.get("dateOfDeath") == null) {
-                int count = houses.get(houseName);
-                houses.replace(houseName, ++count);
-            }
+        for (Map<String, Object> character: characters) {
+            System.out.println("House: " + character.get("house"));
         }
 
-        System.out.println(houses);
-
-        System.out.println(characters.size());
     }
 }

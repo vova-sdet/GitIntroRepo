@@ -12,7 +12,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -25,7 +24,7 @@ public class PUTRequestIntro {
         HttpClient client = HttpClientBuilder.create().build();
 
         URIBuilder uriBuilder = new URIBuilder();
-        URI uri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("api/users/2").build();
+        URI uri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("com.api/users/2").build();
 
         HttpPut put = new HttpPut(uri);
         put.setHeader("Accept", "application/json");

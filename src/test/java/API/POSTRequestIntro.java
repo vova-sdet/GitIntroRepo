@@ -37,7 +37,7 @@ public class POSTRequestIntro extends PayloadUtil {
         URIBuilder uri = new URIBuilder();
         uri.setScheme("https");
         uri.setHost("reqres.in");
-        uri.setPath("api/users");
+        uri.setPath("com.api/users");
 
         HttpPost post = new HttpPost(uri.build());
         post.setHeader("Content-Type", "application/json");

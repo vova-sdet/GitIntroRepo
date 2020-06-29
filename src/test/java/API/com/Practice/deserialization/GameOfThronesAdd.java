@@ -23,7 +23,7 @@ public class GameOfThronesAdd {
 
         HttpClient client = HttpClientBuilder.create().build();
         URIBuilder uriBuilder = new URIBuilder();
-        URI uri = uriBuilder.setScheme("https").setHost("api.got.show").setPath("api/map/characters").build();
+        URI uri = uriBuilder.setScheme("https").setHost("api.got.show").setPath("com.api/map/characters").build();
 
         HttpGet get = new HttpGet(uri);
         get.setHeader("Accept", "application/json");

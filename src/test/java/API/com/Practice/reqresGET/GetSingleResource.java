@@ -21,7 +21,7 @@ public class GetSingleResource {
         HttpClient client = HttpClientBuilder.create().build();
 
         URIBuilder uriBuilder = new URIBuilder();
-        URI uri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("api/unknown/2").build();
+        URI uri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("com.api/unknown/2").build();
 
         HttpGet get = new HttpGet(uri);
         get.setHeader("Accept", "application/json");

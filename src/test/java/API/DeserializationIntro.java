@@ -2,7 +2,6 @@ package API;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.java.it.Ma;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -64,7 +63,7 @@ public class DeserializationIntro {
 
         URIBuilder uriBuilder = new URIBuilder();
 
-        URI uri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("api/users/2").build();
+        URI uri = uriBuilder.setScheme("https").setHost("reqres.in").setPath("com.api/users/2").build();
 
         HttpGet get = new HttpGet(uri);
         get.setHeader("Accept", "application/json");
