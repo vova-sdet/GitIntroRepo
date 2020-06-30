@@ -1,14 +1,14 @@
-package Utils;
+package HW.SlackProject.Util;
 
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public class ConfigReader {
+public class SlackConfigReader {
 
     private static Properties properties;
 
     static {
-        String path = "Configuration.properties";
+        String path = "src/test/java/HW.SlackProject/Util/SlackConfigurations.properties";
 
         try {
             // this line will open your file

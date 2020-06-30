@@ -16,6 +16,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.Assert;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
@@ -51,7 +52,6 @@ public class CreatePetSteps extends PayloadUtil {
         System.out.println("Start POST method execution");
         response = client.execute(post);
         System.out.println("Finished POST method execution");
-
     }
 
     // validation of response status code
@@ -74,6 +74,46 @@ public class CreatePetSteps extends PayloadUtil {
         String actualStatus = (String)parsedResponse.get("status");
 
         Assert.assertEquals(expectedId, actualId);
+        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(expectedStatus, actualStatus);
+    }
+
+    // CREATING PETS USING SCENARIO OUTLINE AND EXAMPLES TABLE
+
+    @When("user crates a pet with {string}, {string}, {string}")
+    public void user_crates_a_pet_with(String expectedId, String expectedName, String expectedStatus) throws URISyntaxException, IOException {
+        HttpClient client = HttpClientBuilder.create().build();
+
+        URIBuilder uriBuilder = new URIBuilder();
+        URI uri = uriBuilder.setScheme("https").setHost("petstore.swagger.io").setPath("v2/pet").build();
+
+        HttpPost post = new HttpPost(uri);
+        post.setHeader("Accept", "application/json");
+        post.setHeader("Content-Type", "application/json");
+
+        System.out.println("Building request body");
+        HttpEntity entity = new StringEntity(getPetPayload(Integer.parseInt(expectedId), expectedName, expectedStatus));
+
+        post.setEntity(entity);
+
+        System.out.println("Start POST method execution");
+        response = client.execute(post);
+        System.out.println("Finished POST method execution");
+    }
+
+    @Then("pet with {string}, {string}, {string} is created")
+    public void pet_with_is_created(String expectedId, String expectedName, String expectedStatus) throws IOException {
+        System.out.println("Mapping response body with JAVA object");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> parsedResponse = objectMapper.readValue(response.getEntity().getContent(),
+                new TypeReference<Map<String, Object>>() {
+                });
+
+        int actualId = (int)parsedResponse.get("id");
+        String actualName = (String)parsedResponse.get("name");
+        String actualStatus = (String)parsedResponse.get("status");
+
+        Assert.assertEquals(Integer.parseInt(expectedId), actualId);
         Assert.assertEquals(expectedName, actualName);
         Assert.assertEquals(expectedStatus, actualStatus);
     }
