@@ -11,7 +11,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.Assert;
 
 import java.io.IOException;
 import java.net.URI;
@@ -28,10 +27,11 @@ public class Scenario5 {
         HttpClient client = HttpClientBuilder.create().build();
         URIBuilder uriBuilder = new URIBuilder();
         URI uri = uriBuilder.setScheme("https").setHost("slack.com").setPath("api/chat.delete").setCustomQuery("channel=C0164SXRETU&ts=" + Scenario1.ts).build();
+        System.out.println(uri);
 
         HttpPost post = new HttpPost(uri);
         post.setHeader("Accept", "application/json");
-        post.setHeader("Content-Type", "application/json");
+        // post.setHeader("Content-Type", "application/json");
         post.setHeader("Authorization", SlackConfigReader.getProperties("token"));
 
         client.execute(post);
@@ -62,7 +62,13 @@ public class Scenario5 {
 
         for (Map<String, Object> message : messages) {
 
-            Assert.assertTrue(!message.get("ts").equals(Scenario1.ts));
+            if (message.get("ts").equals(Scenario1.ts)) {
+                System.out.println("Message is still here!");
+            } else {
+                System.out.println("Message is gone!");
+            }
+
+            // Assert.assertTrue(!message.get("ts").equals(Scenario1.ts));
         }
     }
 }

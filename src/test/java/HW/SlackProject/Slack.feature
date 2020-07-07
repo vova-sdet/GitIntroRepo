@@ -1,6 +1,6 @@
 Feature: get, send and delete message via API and UI
 
-  @one
+  @five
   Scenario: one
     Given the user sends message to slack via POST request
     Then the user verifies the message via GET request

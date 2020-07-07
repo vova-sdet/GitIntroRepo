@@ -8,7 +8,7 @@ public class SlackConfigReader {
     private static Properties properties;
 
     static {
-        String path = "src/test/java/HW.SlackProject/Util/SlackConfigurations.properties";
+        String path = "src/test/java/HW/SlackProject/Util/SlackConfigurations.properties";
 
         try {
             // this line will open your file
