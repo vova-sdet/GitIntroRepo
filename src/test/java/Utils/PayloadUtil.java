@@ -1,5 +1,7 @@
 package Utils;
 
+import org.apiguardian.api.API;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -45,4 +47,27 @@ public class PayloadUtil {
 
         return new String(Files.readAllBytes(Paths.get(path)));
     }
+
+    public static String getJiraAuthorizationPayload () {
+        return "{\n" +
+                "    \"username\": \"vova_boiko\",\n" +
+                "    \"password\": \"569244Hj\"\n" +
+                "}";
+    }
+
+    public static String getJiraCreateBugPayload(String summary, String description, String issueType) {
+        return "{\n" +
+                "    \"fields\": {\n" +
+                "        \"project\": {\n" +
+                "            \"key\": \"TEC\"\n" +
+                "        },\n" +
+                "        \"summary\": \"" + summary + "\",\n" +
+                "        \"description\": \"" + description +"\",\n" +
+                "        \"issuetype\": {\n" +
+                "            \"name\": \"" + issueType + "\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+    }
+
 }
